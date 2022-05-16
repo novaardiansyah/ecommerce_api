@@ -26,4 +26,14 @@ const verifyTokenAndVerification = (req, res, next) => {
   });
 }
 
-module.exports = { verifyToken, verifyTokenAndVerification };
+const verifyTokenAndAdmin = (req, res, next) => {
+  verifyToken(req, res, () => {
+    if (req.user.isAdmin) {
+      next();
+    } else {
+      res.status(401).json({ status: false, error: 'you are not authenticated.' });
+    }
+  });
+}
+
+module.exports = { verifyToken, verifyTokenAndVerification, verifyTokenAndAdmin };
