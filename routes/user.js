@@ -45,7 +45,7 @@ router.get('/stats', verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-router.get('/:_id', verifyTokenAndAdmin, async (req, res) => {
+router.get('/d/:_id', verifyTokenAndAdmin, async (req, res) => {
   try {
     const user = await User.findById(req.params._id);
     const { password, ...others } = user.toObject();
