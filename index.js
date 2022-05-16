@@ -10,6 +10,7 @@ const app = express();
 // * Routes (Start)
 const userRoute = require('./routes/user');
 const authRoute = require('./routes/auth');
+const productRoute = require('./routes/product');
 // * Routes (End)
 
 app.use(bodyParser.json());
@@ -29,4 +30,5 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 // * Routes (Start)
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/products", productRoute);
 // * Routes (End)
