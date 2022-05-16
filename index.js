@@ -6,7 +6,11 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const usersRoute = require('./routes/users');
+
+// * Routes (Start)
+const userRoute = require('./routes/user');
+const authRoute = require('./routes/auth');
+// * Routes (End)
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,4 +26,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
     console.log(err);
   });
 
-app.use("/api/users", usersRoute);
+// * Routes (Start)
+app.use("/api/users", userRoute);
+app.use("/api/auth", authRoute);
+// * Routes (End)
